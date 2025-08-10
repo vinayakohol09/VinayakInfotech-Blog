@@ -1,17 +1,79 @@
-:root{
-  --bg:#f7f8fb; --card:#fff; --accent:#0f62fe; --text:#222;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
-*{box-sizing:border-box}
-body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:var(--text)}
-.container{max-width:900px;margin:0 auto;padding:20px}
-.site-header{background:#fff;padding:18px 0;border-bottom:1px solid #eee}
-.logo{margin:0;font-size:22px;color:var(--accent)}
-.tagline{margin:4px 0 0;font-size:13px;color:#666}
-.nav{margin-top:10px}
-.nav a{margin-right:12px;color:#333;text-decoration:none;font-size:14px}
-.hero{background:linear-gradient(90deg,#fff,#f3f6ff);padding:28px;border-radius:8px;margin:20px 0}
-.hero h2{margin:0 0 8px}
-.cta{display:inline-block;margin-top:10px;padding:10px 14px;background:var(--accent);color:#fff;border-radius:6px;text-decoration:none}
-.posts h3{margin-top:10px}
-.card{background:var(--card);padding:16px;border-radius:8px;margin-bottom:12px;border:1px solid #eee}
-.site-footer{padding:18px 0;margin-top:20px;text-align:center;color:#666}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 1rem;
+}
+.navbar .logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+}
+.navbar .nav-links li {
+  margin: 0 10px;
+}
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  background: #444;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Posts */
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  background: white;
+}
+.post-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.post-card h2 {
+  padding: 10px;
+}
+.post-card p {
+  padding: 0 10px 10px;
+}
+
+/* Single post */
+.single-post {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 20px;
+}
