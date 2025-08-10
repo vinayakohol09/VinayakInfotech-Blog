@@ -1,46 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VinayakInfotech — Make it Easy! With Us</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tech Blog</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="logo">VinayakInfotech</h1>
-      <p class="tagline">Make it Easy! With Us</p>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="post1.html">What is Java?</a>
-        <a href="#">Categories</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
-    </div>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">TechBlogger</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Learn Java the simple way — daily examples, clear code.</h2>
-      <p>Start your backend journey: basics → advanced → interview prep.</p>
-      <a class="cta" href="post1.html">Read first post</a>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to My Tech Blog</h1>
+    <p>Latest insights, tutorials, and trends in technology.</p>
+  </section>
 
-    <section class="posts">
-      <h3>Recent Posts</h3>
-      <article class="card">
-        <h4><a href="post1.html">What is Java? Why Java?</a></h4>
-        <p>Simple explanation with daily-life examples. Great for beginners.</p>
-      </article>
-    </section>
-  </main>
+  <!-- Blog Posts Grid -->
+  <section class="posts">
+    <article class="post-card">
+      <img src="images/java.jpg" alt="Java">
+      <h2><a href="post.html">What is Java? And Why Learn It?</a></h2>
+      <p>Java is a popular programming language used to build backend systems, Android apps and more...</p>
+    </article>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© VinayakInfotech — Make it Easy! With Us</p>
-    </div>
+    <article class="post-card">
+      <img src="images/python.jpg" alt="Python">
+      <h2><a href="post.html">Python for Beginners</a></h2>
+      <p>Python is simple yet powerful. Learn the basics and start building projects today...</p>
+    </article>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 My Tech Blog | Designed by Me</p>
   </footer>
 </body>
 </html>
