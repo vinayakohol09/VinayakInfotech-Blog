@@ -1,48 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Tech Blog</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial Site</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #fafafa;
+    }
+    /* Header */
+    header {
+        background-color: #fff8d6;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        flex-wrap: wrap;
+    }
+    .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+    }
+    nav {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 6px 10px;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    nav a:hover {
+        background-color: #ffe37b;
+    }
+
+    /* Layout */
+    .container {
+        display: flex;
+        min-height: 90vh;
+    }
+    /* Sidebar */
+    aside {
+        background-color: #f5f5f5;
+        width: 220px;
+        padding: 15px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+    aside h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #444;
+    }
+    aside ul {
+        list-style: none;
+        padding: 0;
+    }
+    aside ul li {
+        margin: 8px 0;
+    }
+    aside ul li a {
+        text-decoration: none;
+        color: #555;
+        padding: 5px;
+        display: block;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+    aside ul li a:hover {
+        background-color: #ddd;
+    }
+
+    /* Main content */
+    main {
+        flex: 1;
+        padding: 20px;
+    }
+    main h2 {
+        margin-top: 0;
+        color: #333;
+    }
+    main p {
+        line-height: 1.6;
+        color: #555;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+        aside {
+            width: 100%;
+            box-shadow: none;
+            border-bottom: 1px solid #ccc;
+        }
+    }
+</style>
 </head>
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">TechBlogger</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+
+<header>
+    <div class="logo">My Tutorials</div>
+    <nav id="navMenu">
+        <a href="#" onclick="loadCategory('Java')">Java</a>
+        <a href="#" onclick="loadCategory('Python')">Python</a>
+        <a href="#" onclick="loadCategory('Spring Boot')">Spring Boot</a>
+        <a href="#" onclick="loadCategory('JavaScript')">JavaScript</a>
     </nav>
-  </header>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Welcome to My Tech Blog</h1>
-    <p>Latest insights, tutorials, and trends in technology.</p>
-  </section>
+<div class="container">
+    <aside>
+        <h3 id="categoryTitle">Select a Category</h3>
+        <ul id="subtopics"></ul>
+    </aside>
+    <main id="content">
+        <h2>Welcome</h2>
+        <p>Select a category and subtopic from the menu to view its content.</p>
+    </main>
+</div>
 
-  <!-- Blog Posts Grid -->
-  <section class="posts">
-    <article class="post-card">
-      <img src="images/java.jpg" alt="Java">
-      <h2><a href="post.html">What is Java? And Why Learn It?</a></h2>
-      <p>Java is a popular programming language used to build backend systems, Android apps and more...</p>
-    </article>
+<script>
+    const topics = {
+        "Java": {
+            "OOP Concepts": "Java supports OOP concepts such as Encapsulation, Inheritance, Polymorphism, and Abstraction.",
+            "Collections": "Collections in Java are used to store, retrieve, manipulate, and communicate aggregate data.",
+            "Multithreading": "Multithreading in Java is a process of executing multiple threads simultaneously."
+        },
+        "Python": {
+            "Basics": "Python is an interpreted, high-level, general-purpose programming language.",
+            "Data Types": "Python has various data types such as int, float, string, list, tuple, set, and dict.",
+            "OOP": "Python supports OOP concepts like inheritance, encapsulation, and polymorphism."
+        },
+        "Spring Boot": {
+            "Introduction": "Spring Boot simplifies the development of Java applications by providing defaults for code and configuration.",
+            "Annotations": "Common annotations include @RestController, @GetMapping, and @SpringBootApplication.",
+            "JPA": "Spring Boot integrates seamlessly with Spring Data JPA for database operations."
+        },
+        "JavaScript": {
+            "Variables": "JavaScript variables can be declared using var, let, or const.",
+            "Functions": "Functions are first-class objects in JavaScript.",
+            "DOM": "JavaScript can manipulate HTML and CSS via the DOM API."
+        }
+    };
 
-    <article class="post-card">
-      <img src="images/python.jpg" alt="Python">
-      <h2><a href="post.html">Python for Beginners</a></h2>
-      <p>Python is simple yet powerful. Learn the basics and start building projects today...</p>
-    </article>
-  </section>
+    function loadCategory(category) {
+        const subtopicsList = document.getElementById('subtopics');
+        const categoryTitle = document.getElementById('categoryTitle');
+        subtopicsList.innerHTML = '';
+        categoryTitle.textContent = category;
+        
+        Object.keys(topics[category]).forEach(subtopic => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = "#";
+            a.textContent = subtopic;
+            a.onclick = () => loadContent(category, subtopic);
+            li.appendChild(a);
+            subtopicsList.appendChild(li);
+        });
+    }
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 My Tech Blog | Designed by Me</p>
-  </footer>
+    function loadContent(category, subtopic) {
+        const content = document.getElementById('content');
+        content.innerHTML = `<h2>${subtopic}</h2><p>${topics[category][subtopic]}</p>`;
+    }
+</script>
+
 </body>
 </html>
